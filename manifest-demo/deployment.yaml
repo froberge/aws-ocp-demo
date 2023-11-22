@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: simple-quarkus-service
+  name: simple-quarkus-service
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simple-quarkus-service
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: simple-quarkus-service
+    spec:
+      containers:
+      - name: simple-quarkus-service
+        image: quay.io/froberge/simple-quarkus-service:v1
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+          seccompProfile:
+            type: RuntimeDefault
+          capabilities:
+            drop:
+            - ALL
+          runAsNonRoot: true
+---

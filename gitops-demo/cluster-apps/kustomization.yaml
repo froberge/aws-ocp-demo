@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+bases:
+  - ../argocd-components/argocd-dev-instance
+  - openshift-pipeline
+  
+
+resources:
+  - namespaces/simple-quarkus-dev.yaml
+  - namespaces/simple-quarkus-prod.yaml
+  - namespaces/simple-quarkus-pipeline.yaml
+  - namespaces/rbac-developer.yaml

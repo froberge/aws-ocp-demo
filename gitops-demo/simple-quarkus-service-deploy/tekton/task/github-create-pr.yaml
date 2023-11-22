@@ -1,0 +1,46 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: github-create-pr
+spec:
+  params:
+  - name: title
+    type: string
+    description: The title of the pull request. ex. Feature X
+  - name: body
+    type: string
+    default: The body description of the pull request. ex. The following PR includes these changes...
+    description: The body of the PR request
+  - name: head
+    type: string
+    description: The name of the branch where your changes are implemented. ex. new-feature-branch
+  - name: github-secret
+    type: string
+    default: github
+    description: "The name of the secret that has your github username and token"
+  steps:
+    - name: run-commands
+      image: docker.io/michaelin/github-cli:latest
+      script: |
+        #!/usr/bin/env bash
+        # git create PR
+        gh pr create -t "$(params.title)" -b "$(params.body)"
+      workingDir: $(workspaces.source.path)
+      env:
+        - name: GITHUB_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: $(params.github-secret)
+              key: token
+        - name: GITHUB_USER
+          valueFrom:
+            secretKeyRef:
+              name: $(params.github-secret)
+              key: username
+        - name: GITHUB_EMAIL
+          valueFrom:
+            secretKeyRef:
+              name: $(params.github-secret)
+              key: email
+  workspaces:
+  - name: source

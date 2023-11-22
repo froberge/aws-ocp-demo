@@ -1,0 +1,40 @@
+---
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: simple-quarkus-service-trigger-template
+spec:
+  params:
+    - name: gitrevision
+      description: The git revision
+      default: main
+    - name: gitrepositoryurl
+      description: The git repository url ( "https://github.com/...")
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        generateName: simple-quarkus-service-
+        labels:
+          tekton.dev/pipeline: simple-quarkus-service
+      spec:
+        pipelineRef:
+          name: simple-quarkus-service
+        serviceAccountName: pipeline
+        params:
+          - name: IMAGE_NAME
+            value: image-registry.openshift-image-registry.svc:5000/pipeline-demo/simple-quarkus-service
+          - name: APP_NAME
+            value: simple-quarkus-service
+          - name: GITHUB_REPO_URL
+            value: '$(tt.params.gitrepositoryurl)'
+          - name: GITHUB_REPO_REVISION
+            value: '$(tt.params.gitrevision)'
+          - name: PATH_CONTEXT
+            value: .
+          - name: VERSION
+            value: openjdk-11-el7
+        workspaces:
+          - name: workspace
+            persistentVolumeClaim:
+              claimName: sources-pvc

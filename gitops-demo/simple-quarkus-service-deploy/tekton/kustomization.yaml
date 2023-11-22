@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: simple-quarkus-pipeline
+
+resources:
+  - workspaces/maven-repo-pvc.yaml
+  - workspaces/source-pvc.yaml
+  - pipelines/build-release-pipeline.yaml
+  - task/set-image-tag.yaml
+  - task/kustomize-task.yaml
+  - task/github-create-pr.yaml
+  - triggers/github-eventlistener.yaml
+  - triggers/github-pr-trigger-binding.yaml
+  - triggers/listener-routes.yaml
+  - triggers/pipeline-trigger-template.yaml
+

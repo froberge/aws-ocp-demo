@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: simple-quarkus-dev
+spec:
+  destination:
+    namespace: simple-quarkus-dev
+    server: https://kubernetes.default.svc
+  project: simple-quarkus
+  source:
+    path: gitops-demo/simple-quarkus-service-deploy/app/overlays/dev
+    repoURL: https://github.com/froberge/simple-quarkus-service-deploy.git
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ApplyOutOfSyncOnly=true

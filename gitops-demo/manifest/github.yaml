@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: github
+  namespace: simple-quarkus-pipeline
+type: Opaque
+data:
+  token: [ENCRYPTED_TOKEN]
+  username: [ENCRYPTED_USERNAME]
+  email: [ENCRYPTED_EMAIL]

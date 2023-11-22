@@ -1,0 +1,57 @@
+---
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: pipeline-trigger-template
+spec:
+  params:
+    - name: gitrevision
+      description: The git revision
+      default: main
+    - name: gitrepositoryurl
+      description: The git repository url ( "https://github.com/...")
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        generateName: build-and-release-
+        labels:
+          tekton.dev/pipeline: build-and-release
+      spec:
+        pipelineRef:
+          name: build-and-release
+        serviceAccountName: pipeline
+        params:
+          - name: IMAGE_NAME
+            value: image-registry.openshift-image-registry.svc:5000/simple-quarkus-pipeline/simple-quarkus-service
+          - name: APP_NAME
+            value: simple-quarkus-service
+          - name: GITHUB_REPO_URL
+            value: '$(tt.params.gitrepositoryurl)'
+          - name: GITHUB_REPO_REVISION
+            value: '$(tt.params.gitrevision)'
+          - name: DEPLOY_GIT_REPO
+            value: 'https://github.com/froberge/simple-quarkus-service-deploy'
+          - name: DEPLOY_GIT_REVISION
+            value: main            
+          - name: DEV_OVERLAY_DIR
+            value: gitops-demo/simple-quarkus-service-deploy/app/overlays/dev
+          - name: PROD_OVERLAY_DIR
+            value: gitops-demo/simple-quarkus-service-deploy/app/overlays/prod
+          - name: PATH_CONTEXT
+            value: .
+          - name: VERSION
+            value: openjdk-11-el7
+        workspaces:
+          - name: source
+            persistentVolumeClaim:
+              claimName: sources-pvc
+          - name: m2-repo
+            persistentVolumeClaim:
+              claimName: maven-repo-pvc
+          - name: scratch
+            emptyDir: {}
+          - name: git-credentials
+            secret:
+              secretName: github-authentication
+

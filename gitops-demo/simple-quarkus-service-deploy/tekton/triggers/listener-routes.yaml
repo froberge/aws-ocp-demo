@@ -1,0 +1,12 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: el-github-webhook
+  
+spec:
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: el-github-webhook
+    weight: 100

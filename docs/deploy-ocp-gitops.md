@@ -1,29 +1,19 @@
-# AWS OpenShift Demo
+# Deploy Using OpenShift GitOps
 
-This repository contains the different manifest needed to make OpenShift ready for development after the initial installation of OpenShift on AWS infrastructure. Is it used to implement the `best pratices` in day 2 operations such as the separation of concern between the application code and the cluster manifest.
+## Requirement
+* Access to an OpenShift Cluster
 
-The demo will explore different concepts tools and concepts needed for an healty management of an   OpenShift cluster such as:
-* OpenShift Pipeline for CI
-* OpenShift GitOps for CD
-* Red Hat Build of Keycloak
-* Deployment of a simple application in Quarkus. [Simple Quarkus Service](https://github.com/froberge/simple-quarkus-service).
+* `Have the OpenShift Pipeline Operator install`. For instructions on how to install OpenShift Pipiline you can refer to my [OpenShift Pipeline Demo](https://github.com/froberge/ocp-pipeline-demo) in this [section](https://github.com/froberge/ocp-pipeline-demo/blob/main/docs/install-pipeline-operator.md)
 
- 
-### Prerequisite
-
-1. Access to github
-1. Clone/Fork of this repository
-1. Access to an OpenShift Cluster
-1. OpenShift CLI
-1. [Optional] OpenShift GitOps operator install on the cluster to run the GitOps demo
+* `Have the OpenShift GitOps Operator install`. For instructions on how to install OpenShift Gitops you can refer to my [OpenShift GitOps Demo](https://github.com/froberge/ocp-gitops-demo) in this [section](https://github.com/froberge/ocp-gitops-demo/blob/main/docs/install-gitops-operator.md)
 
 
-### Deploy Using OpenShift GitOps
+* `Have a clone/fork of this repository`.
 
-In this demo we will be demontrating how to use `OpenShift` Gitops to manage our cluster and to deploy an application. To achieve this we need 2 `ArgoCD instance`. One that managed the cluster and one manages the applications
+In this demo we will be demontrating how to use `OpenShift` Gitops to manage our application and to deploy an application. To do this we need to deploy an other `ArgoCD instance` that will be use for developers to manage the applications
 
 __NOTE__
-*   The default `cluster` instance of Argo CD is meant for cluster admin tasks like creating namespace managing role bindings, installation operators etc. not for day to day application management.
+*   The default `cluster` instance of Argo CD is meant for cluster admin tasks like creating namespace managing role bindings not for day to day application management.
 
 * `The Developer Argo CD instance` will be deploy in it own namespaces and is intented for the developper to use to manage the application.
 
@@ -42,9 +32,9 @@ __NOTE__
 
 ### The Automation Flow.  
 
-The automation flow uses a mix of Tekton(CI) and ArgoCD (CD).
+The automation flow uses a mix of Tekton and ArgoCD.
 
-Tekton Build the application and creates the PR. ArgoCD monitor the changes in Git. The Pipeline is trigger with a WebHook from GitHub.
+Tekton Build the application and creates the PR. ArgoCD monitor the changes in Git. The Pipeline is trigger woth a WebHook from GitHub.
 
 ```mermaid
 flowchart LR;
@@ -59,6 +49,9 @@ flowchart LR;
     H --> I(Create Branch in Git);
     I --> J(Commit PR \n for PROD changes);
 ```
+
+
+
 
 ### SetUp GitHub
 
@@ -138,5 +131,6 @@ You can now push a change to the repository, it should trigger the pipeline.
 
 :tada: CONGRATULATIONS
 
-You have now manage your cluster and your applicaiton using OpenShift GitOps on AWS.
+You have now deploy the service using OpenShift GitOps.
 
+:point_right: Return: [Reposotory content](../README.md)
