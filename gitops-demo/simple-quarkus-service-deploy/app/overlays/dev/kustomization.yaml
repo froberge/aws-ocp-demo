@@ -11,7 +11,7 @@ patchesJson6902:
     group: apps
     kind: Deployment
     name: simple-quarkus-service
-    version: v1
+    version: v2
 images:
 - name: image-registry.openshift-image-registry.svc:5000/simple-quarkus-pipeline/simple-quarkus-service
   newTag: 708f63

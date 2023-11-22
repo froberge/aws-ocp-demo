@@ -20,6 +20,9 @@ The demo will explore different concepts tools and concepts needed for an healty
 
 ### Deploy Using OpenShift GitOps
 
+* `Have the OpenShift GitOps Operator install`. For instructions on how to install OpenShift Gitops you can refer to my [OpenShift GitOps Demo](https://github.com/froberge/ocp-gitops-demo) in this [section](https://github.com/froberge/ocp-gitops-demo/blob/main/docs/install-gitops-operator.md)
+
+
 In this demo we will be demontrating how to use `OpenShift` Gitops to manage our cluster and to deploy an application. To achieve this we need 2 `ArgoCD instance`. One that managed the cluster and one manages the applications
 
 __NOTE__
