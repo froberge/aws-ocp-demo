@@ -9,7 +9,7 @@ spec:
   project: simple-quarkus
   source:
     path: gitops-demo/simple-quarkus-service-deploy/app/overlays/dev
-    repoURL: https://github.com/froberge/simple-quarkus-service-deploy.git
+    repoURL: https://github.com/froberge/aws-ocp-demo.git
     targetRevision: main
   syncPolicy:
     automated:
