@@ -4,5 +4,7 @@ kind: Kustomization
 namespace: openshift-gitops
 
 resources:
+  - argocd-cm.yaml
+  - argocd-sercret.yaml
   - argocd-project.yaml
   - argocd-application.yaml
