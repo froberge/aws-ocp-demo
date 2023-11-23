@@ -14,4 +14,4 @@ patchesJson6902:
     version: v2
 images:
 - name: image-registry.openshift-image-registry.svc:5000/simple-quarkus-pipeline/simple-quarkus-service
-  newTag: f9926b
+  newTag: 7fd6cc
