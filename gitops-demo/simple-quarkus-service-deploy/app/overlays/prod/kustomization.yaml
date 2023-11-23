@@ -14,6 +14,6 @@ resources:
 - ../../base/
 images:
 - name: image-registry.openshift-image-registry.svc:5000/simple-quarkus-pipeline/simple-quarkus-service
-  newTag: 46f171
+  newTag: 98b154
 - name: quay.io/froberge/simple-quarkus-service
   newTag: v2
