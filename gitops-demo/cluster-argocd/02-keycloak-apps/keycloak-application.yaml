@@ -9,7 +9,7 @@ spec:
   project: keycloak-project
   source:
     path: gitops/manifests/instance/dev
-    repoURL: https://github.com/masauve/keycloak-x-openshift
+    repoURL: https://github.com/froberge/keycloak-x-openshift
     targetRevision: main
   syncPolicy:
     automated:

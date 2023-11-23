@@ -75,19 +75,19 @@ We need to set up 2 different elements in GitHub
 From your [GitHub](github.com) account.
 
 1. Under profile Select `setting`.
-    ![GitHub setting](images/github-setting.png)
+    ![GitHub setting](docs/images/github-setting.png)
 
 2. Select `Developer settings`
 
-    ![GitHub dev](images/github-devsetting.png)
+    ![GitHub dev](docs/images/github-devsetting.png)
 
 3. Select `Personal access tokens`
 
-    ![GitHub personal token](images/github-personal-token.png)
+    ![GitHub personal token](docs/images/github-personal-token.png)
 
 4. Click `Generate new token` and enter the information.
 
-    ![GitHub personal token 2](images/github-access-token.png)
+    ![GitHub personal token 2](docs/images/github-access-token.png)
 
     * `Note`: A name for token
     * `Expiration`:When the token should expire according to you security policy.
@@ -127,7 +127,7 @@ From your [GitHub](github.com) account.
 
 2. Open [GitHub](https://github.com/)  in the the code repository, go to setting -> Webhook -> Add Webhook
 
-    ![Webhook](images/github-webhook.png)
+    ![Webhook](docs/images/github-webhook.png)
 
 You can now push a change to the repository, it should trigger the pipeline. 
 

@@ -3,4 +3,4 @@ kind: Kustomization
 
 resources:
 - ../../base
-- ../../../argocd-components
+- ../../../cluster-argocd
