@@ -13,7 +13,7 @@ spec:
     - default: simple-quarkus-service
       name: APP_NAME
       type: string
-    - default: 'https://github.com/froberge/aws-ocp-demo'
+    - default: 'https://github.com/froberge/simple-quarkus-service'
       name: GIT_REPO
       type: string
     - default: main
