@@ -3,4 +3,5 @@ kind: Kustomization
 
 resources:
 - keycloak
+- cert-manager
 - openshift-pipeline
