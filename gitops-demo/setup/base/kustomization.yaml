@@ -3,4 +3,4 @@ kind: Kustomization
 
 resources:
 - rbac.yaml
-- ../..operators
+- ../../operators
