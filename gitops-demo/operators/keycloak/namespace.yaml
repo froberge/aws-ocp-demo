@@ -4,4 +4,4 @@ metadata:
   annotations:
     openshift.io/description: "Red Hat Keycloak project"
     openshift.io/display-name: "Red Hat Keycloak"
-  name: keycloak
+  name: keycloak-dev

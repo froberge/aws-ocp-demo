@@ -8,7 +8,7 @@ spec:
     server: https://kubernetes.default.svc
   project: simple-quarkus
   source:
-    path: gitops-demo/simple-quarkus-service-deploy/app/overlays/dev
+    path: gitops-demo/service-deploy/app/overlays/dev
     repoURL: https://github.com/froberge/aws-ocp-demo.git
     targetRevision: main
   syncPolicy:
