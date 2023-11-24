@@ -95,20 +95,17 @@ From your [GitHub](github.com) account.
     * Click `Generate token`
 
     > :warning: Copy the generated token in a secure place, since once the window is close, you won't be able to retrieve it. 
+5. Create a folder `manifest-local` which is a copy of the  `manifest`. This contains information that should not be in your repository. Idealy this would be in a vault.
 
 5. Generate the require secret for OpenShift to commit.
-    * You need to edit the file `manifest/github-secret.yaml`
+    * You need to edit the file `manifest-local/github-secret.yaml`
     * Replace following token with the appropriate value
         * `[CLEAR_TEXT_USERNAME]`
         * `[CLEAR_TEXT_TOKEN]`
-    * Apply the file to OpenShift
-        ```
-        oc apply -f manifest/github-secret.yaml
-        ```
     :warning: currently tekton only support basic_auth or ssh, this is why we need to generate one encrypted for the pull request that requires the encrypted token.
 
 6. Generate the require encrypted secret for OpenShift to create a Pull Request.
-    * You need to edit the file `manifest/github.yaml`
+    * You need to edit the file `manifest-local/github.yaml`
     * You need to replace in base64 the folowwing information
         * token: [64_encoded_token]
         * username: [64_encoded_username]
