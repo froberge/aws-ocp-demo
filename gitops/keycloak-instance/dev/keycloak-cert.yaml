@@ -9,3 +9,7 @@ spec:
     kind: ClusterIssuer
   dnsNames:
   - keycloak-dev.apps.cluster-hrdgj.hrdgj.sandbox1859.opentlc.com
+  acme:
+    config:
+    - dns01:
+      provider: aws-route53
