@@ -5,6 +5,6 @@ metadata:
   namespace: simple-quarkus-pipeline
 type: Opaque
 data:
-  token: [ENCRYPTED_TOKEN]
-  username: [ENCRYPTED_USERNAME]
-  email: [ENCRYPTED_EMAIL]
+  token: ${{ secrets.GITHUB_ENCRYPTED_TOKEN }}
+  username: ${{ secrets.GITHUB_ENCRYPTED_USERNAME }}
+  email: ${{ secrets.GITHUB_ENCRYPTED_EMAIL }}
