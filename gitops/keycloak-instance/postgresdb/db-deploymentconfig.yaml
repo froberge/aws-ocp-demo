@@ -1,0 +1,99 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    template: postgresql-ephemeral-template
+    app: postgresql
+    app.openshift.io/runtime: postgresql
+  name: postgresql
+  namespace: keycloak-dev
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+      name: postgresql
+  strategy:
+    activeDeadlineSeconds: 21600
+    type: Recreate
+    recreateParams:
+      timeoutSeconds: 600
+  template:
+    metadata:
+      labels:
+        name: postgresql
+    spec:
+      containers:
+      - env:
+        - name: POSTGRESQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: postgresql
+              key: database-user
+        - name: POSTGRESQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgresql
+              key: database-password
+        - name: POSTGRESQL_DATABASE
+          valueFrom:
+            secretKeyRef:
+              name: postgresql
+              key: database-name
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          exec:
+            command:
+              - /usr/libexec/check-container
+              - '--live'
+          initialDelaySeconds: 120
+          timeoutSeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          failureThreshold: 3       
+        name: postgresql
+        ports:
+        - containerPort: 5432
+          protocol: TCP
+        readinessProbe:
+          exec:
+            command:
+              - /usr/libexec/check-container
+          initialDelaySeconds: 5
+          timeoutSeconds: 1
+          periodSeconds: 10
+          successThreshold: 1
+          failureThreshold: 3
+        resources:
+          limits:
+            memory: 512Mi
+            cpu: 500m
+          requests: 
+            memory: 512Mi
+            cpu: 250m
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - name: postgresql-data
+          mountPath: /var/lib/pgsql/data
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - name: postgresql-data
+          emptyDir: {}
+  test: false
+  triggers:
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - postgresql
+      from:
+        kind: ImageStreamTag
+        namespace: openshift
+        name: 'postgresql:10-el8'
+    type: ImageChange
+  
+  
+  
+  

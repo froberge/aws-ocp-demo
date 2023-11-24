@@ -4,7 +4,6 @@ kind: Kustomization
 namespace: keycloak-dev
 
 resources:
-  - postgresdb
-  - keycloak-cert.yaml
-  - keycloak-v2.yaml
-  - realm-webauthn.yaml
+  - db-secret.yaml
+  - db-deploymentconfig.yaml
+  - db-svc.yaml
