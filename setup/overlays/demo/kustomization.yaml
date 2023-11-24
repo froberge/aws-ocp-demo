@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
 - ../../base
 - ../../../gitops/cluster-argocd
-
+- ../../../manifest-local
