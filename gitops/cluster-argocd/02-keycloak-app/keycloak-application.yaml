@@ -8,8 +8,8 @@ spec:
     server: https://kubernetes.default.svc
   project: keycloak-project
   source:
-    path: gitops/manifests/instance/dev
-    repoURL: https://github.com/froberge/keycloak-x-openshift
+    path: keycloak-instance
+    repoURL: https://github.com/froberge/aws-ocp-demo.git
     targetRevision: main
   syncPolicy:
     automated:

@@ -16,7 +16,7 @@ spec:
       dns01:
         route53:
           region: ca-central-1
-          accessKeyID: [AWS_ACCESS_KEY_ID]}
+          accessKeyID: [AWS_ACCESS_KEY_ID]
           secretAccessKeySecretRef:
             name: letsencrypt-aws
             key: secret-access-key

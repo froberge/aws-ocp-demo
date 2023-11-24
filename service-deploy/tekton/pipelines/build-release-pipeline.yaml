@@ -25,10 +25,10 @@ spec:
     - default: main
       name: DEPLOY_GIT_REVISION
       type: string
-    - default: gitops-demo/service-deploy/app/overlays/dev
+    - default: service-deploy/app/overlays/dev
       name: DEV_OVERLAY_DIR
       type: string
-    - default: gitops-demo/service-deploy/app/overlays/prod
+    - default: service-deploy/app/overlays/prod
       name: PROD_OVERLAY_DIR
       type: string
     - default: >-

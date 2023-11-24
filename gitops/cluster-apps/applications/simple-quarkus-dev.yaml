@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: simple-quarkus-pipeline
+  name: simple-quarkus-dev
 spec:
+  destination:
+    namespace: simple-quarkus-dev
+    server: https://kubernetes.default.svc
   project: simple-quarkus
   source:
-    path: gitops-demo/service-deploy/tekton
+    path: service-deploy/app/overlays/dev
     repoURL: https://github.com/froberge/aws-ocp-demo.git
     targetRevision: main
-  destination:
-    namespace: simple-quarkus-pipeline
-    server: https://kubernetes.default.svc
   syncPolicy:
     automated:
       prune: true
