@@ -13,5 +13,5 @@ patchesJson6902:
 resources:
 - ../../base/
 images:
-- name: image-registry.openshift-image-registry.svc:5000/simple-quarkus-pipeline/simple-quarkus-service
-  newTag: 46f171
+- name: quay.io/froberge/simple-quarkus-service
+  newTag: v3
