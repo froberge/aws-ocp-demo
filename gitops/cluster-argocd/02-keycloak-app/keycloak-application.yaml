@@ -8,7 +8,7 @@ spec:
     server: https://kubernetes.default.svc
   project: keycloak-project
   source:
-    path: keycloak-instance
+    path: gitops/keycloak-instance
     repoURL: https://github.com/froberge/aws-ocp-demo.git
     targetRevision: main
   syncPolicy:

@@ -6,4 +6,3 @@ namespace: openshift-gitops
 resources:
   - 01-argocd-app
   - 02-keycloak-app
-  - 03-cert-manager

@@ -5,7 +5,7 @@ metadata:
 spec:
   project: simple-quarkus
   source:
-    path: service-deploy/app/overlays/prod
+    path: gitops/service-deploy/app/overlays/prod
     repoURL: https://github.com/froberge/aws-ocp-demo.git
     targetRevision: main
   destination:

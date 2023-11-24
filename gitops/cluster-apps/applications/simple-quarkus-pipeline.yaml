@@ -5,7 +5,7 @@ metadata:
 spec:
   project: simple-quarkus
   source:
-    path: service-deploy/tekton
+    path: gitops/service-deploy/tekton
     repoURL: https://github.com/froberge/aws-ocp-demo.git
     targetRevision: main
   destination:
