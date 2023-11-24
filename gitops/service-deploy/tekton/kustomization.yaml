@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: simple-quarkus-pipeline
 
 resources:
+  - ../manifest-local
   - workspaces/maven-repo-pvc.yaml
   - workspaces/source-pvc.yaml
   - pipelines/build-release-pipeline.yaml
