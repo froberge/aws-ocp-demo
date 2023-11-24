@@ -1,0 +1,24 @@
+apiVersion: k8s.keycloak.org/v2alpha1
+kind: Keycloak
+metadata:
+  name: keycloak
+  labels:
+    app: keycloak
+spec:
+  serverConfiguration:
+    - name: features
+      value: web-authn,openshift-integration
+    - name: db
+      value: postgres
+    - name: db-password
+      value: sso1234
+    - name: db-url
+      value: jdbc:postgresql://postgresql.keycloak-dev.svc.cluster.local:5432/keycloak
+    - name: db-username
+      value: keycloak
+    - name: cache
+      value: ispn
+  instances: 1
+  hostname: keycloak-dev.apps.cluster-hrdgj.hrdgj.sandbox1859.opentlc.com
+  tlsSecret: my-tls-dev-cert
+  image: quay.io/msauve/keycloak-custom:latest
