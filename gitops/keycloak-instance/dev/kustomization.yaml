@@ -5,6 +5,6 @@ namespace: keycloak-dev
 
 resources:
   - ../postgresdb
-  - keycloak-cert.yaml
+  - keycloak-cert-selfsign
   - keycloak-v2.yaml
-  - realm-webauthn.yaml
+
