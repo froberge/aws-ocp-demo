@@ -5,20 +5,39 @@ metadata:
   labels:
     app: keycloak
 spec:
-  serverConfiguration:
-    - name: features
-      value: web-authn,openshift-integration
-    - name: db
-      value: postgres
-    - name: db-password
-      value: sso1234
-    - name: db-url
-      value: jdbc:postgresql://postgresql.keycloak-dev.svc.cluster.local:5432/keycloak
-    - name: db-username
-      value: keycloak
-    - name: cache
-      value: ispn
+  http:
+    tlsSecret: my-tls-dev-cert
+  hostname:
+    hostname: keycloak.apps.home.myocp.net
+  db:
+    usernameSecret:
+      key: database-user
+      name: postgresql
+    passwordSecret:
+      name: postgresql
+      key: database-password
+    port: 5432
+    vendor: postgres
+    host: postgres
+    url: jdbc:postgresql://postgresql:5432/postgres
+    database: postgres
   instances: 1
-  hostname: keycloak-dev.apps.cluster-8ctj8.8ctj8.sandbox1098.opentlc.com
-  tlsSecret: my-tls-dev-cert
-  image: quay.io/msauve/keycloak-custom:latest
+
+# spec:
+#   serverConfiguration:
+#     - name: features
+#       value: web-authn,openshift-integration
+#     - name: db
+#       value: postgres
+#     - name: db-password
+#       value: sso1234
+#     - name: db-url
+#       value: jdbc:postgresql://postgresql.keycloak-dev.svc.cluster.local:5432/keycloak
+#     - name: db-username
+#       value: keycloak
+#     - name: cache
+#       value: ispn
+#   instances: 1
+#   hostname: keycloak-dev.apps.cluster-8ctj8.8ctj8.sandbox1098.opentlc.com
+#   tlsSecret: my-tls-dev-cert
+#   image: quay.io/msauve/keycloak-custom:latest
