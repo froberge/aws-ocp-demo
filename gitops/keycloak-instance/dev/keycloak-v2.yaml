@@ -8,7 +8,7 @@ spec:
   http:
     tlsSecret: my-tls-dev-cert
   hostname:
-    hostname: keycloak.apps.home.myocp.net
+    hostname: keycloak-dev.apps.cluster-8ctj8.8ctj8.sandbox1098.opentlc.com
   db:
     usernameSecret:
       key: database-user
