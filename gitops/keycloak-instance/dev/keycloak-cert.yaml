@@ -8,4 +8,4 @@ spec:
     name: letsencrypt-prod
     kind: ClusterIssuer
   dnsNames:
-  - keycloak-dev.apps.cluster-hrdgj.hrdgj.sandbox1859.opentlc.com
+  - keycloak-dev.apps.cluster-8ctj8.8ctj8.sandbox1098.opentlc.com

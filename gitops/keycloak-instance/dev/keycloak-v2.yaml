@@ -19,6 +19,6 @@ spec:
     - name: cache
       value: ispn
   instances: 1
-  hostname: keycloak-dev.apps.cluster-hrdgj.hrdgj.sandbox1859.opentlc.com
+  hostname: keycloak-dev.apps.cluster-8ctj8.8ctj8.sandbox1098.opentlc.com
   tlsSecret: my-tls-dev-cert
   image: quay.io/msauve/keycloak-custom:latest
