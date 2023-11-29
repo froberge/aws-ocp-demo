@@ -5,4 +5,4 @@ namespace: openshift-config
 
 resources:
   - users
-  - webconsole
+#  - webconsole
