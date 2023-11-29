@@ -9,4 +9,4 @@ spec:
     type: HTPasswd
     htpasswd:
       fileData:
-        name: htpasswd-d8f88k8f52
+        name: htpasswd
