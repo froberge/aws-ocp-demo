@@ -5,5 +5,5 @@ namespace: openshift-config
 
 resources:
   - userfile-secret.yaml
- # - oauth.yaml
+  - oauth.yaml
   - rbac.yaml
