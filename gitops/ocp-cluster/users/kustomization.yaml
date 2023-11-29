@@ -10,3 +10,4 @@ secretGenerator:
 
 resources:
   - oauth.yaml
+  - rbac.yaml
