@@ -3,11 +3,7 @@ kind: Kustomization
 
 namespace: openshift-config
 
-secretGenerator:
-- name: htpasswd
-  files:
-  - htpasswd
-
 resources:
+  - userfile-secret.yaml
   - oauth.yaml
   - rbac.yaml
