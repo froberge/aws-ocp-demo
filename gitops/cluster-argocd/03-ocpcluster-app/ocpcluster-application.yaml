@@ -1,15 +1,15 @@
 kind: Application
 apiVersion: argoproj.io/v1alpha1
 metadata:
-  name: webconsole
+  name: ocpcluster
   namespace: openshift-gitops
 spec:
   destination:
     namespace: openshift-gitops
     server: https://kubernetes.default.svc
-  project: webconsole
+  project: ocpcluster
   source:
-    path: gitops/webconsole
+    path: gitops/ocp-cluster
     repoURL: https://github.com/froberge/aws-ocp-demo.git
     targetRevision: main
   syncPolicy:
