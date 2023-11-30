@@ -6,5 +6,5 @@ spec:
   customization:
     customLogoFile:
       key: console-custom-logo.png
-      name: console-custom-logo
+      name: custom-logo
     customProductName: AWS User Group Demo
