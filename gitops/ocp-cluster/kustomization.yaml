@@ -4,5 +4,6 @@ kind: Kustomization
 namespace: openshift-config
 
 resources:
+  - operators
   - users
   - webconsole
